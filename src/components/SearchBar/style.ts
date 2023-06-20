@@ -7,18 +7,20 @@ export const StyledSearchBar = styled.div`
   border-radius: 8px;
   display: flex;
   align-items: center;
-
-  gap: 2.6rem;
+  position: relative;
+  gap: 8.6rem;
 
   h3 {
     font-family: Barlow;
   }
 
   p {
+    position: absolute;
     font-size: 14px;
     font-weight: 300;
     margin-top: 5px;
     color: var(--text-secondary);
+    left: 11.6rem;
   }
 
   div {
