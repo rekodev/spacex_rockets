@@ -1,24 +1,16 @@
 import styled from 'styled-components';
 
-export const StyledTable = styled.table`
+export const StyledTable = styled.div`
+  /* height: 213px; */
+  overflow-x: auto;
+`;
+
+export const StyledTableContainer = styled.div`
   /* border-collapse: separate; */
-  border-spacing: 0 3px;
-  table-layout: fixed;
-  width: 100%;
+  min-width: 1100px;
+  display: flex;
 
-  thead tr th {
-    text-align: start;
-    padding: 16px 28px;
-    color: var(--text-secondary);
-    font-size: 14px;
-    text-align: end;
-  }
-
-  thead tr th:first-child {
-    text-align: start;
-  }
-
-  thead tr th:last-child {
-    padding-right: 46px;
+  div:first-child {
+    background-color: none;
   }
 `;

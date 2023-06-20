@@ -1,26 +1,32 @@
-import TableRow from '../TableRow';
-import { StyledTable } from './style';
+import TableColumn from '../TableColumn';
+import { StyledTable, StyledTableContainer } from './style';
 
-interface TableComponents {
+interface TableProps {
   headers: string[];
-  rows: string[][];
+  rows: Record<string, string>[];
+  searchTerm: string;
+  setResultCount: (resultCount: number) => void;
 }
 
-const Table = ({ headers, rows }: TableComponents) => {
+const Table = ({ headers, rows, searchTerm, setResultCount }: TableProps) => {
+  const filteredRows = searchTerm
+    ? rows.filter((row) =>
+        Object.values(row).some((value) =>
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      )
+    : rows;
+
   return (
     <StyledTable>
-      <thead>
-        <tr>
-          {headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((rowCells, index) => (
-          <TableRow key={index} cells={rowCells} />
-        ))}
-      </tbody>
+      <StyledTableContainer>
+        {headers.map((header) => {
+          const cells = filteredRows.map((row) => row[header]);
+
+          setResultCount(cells.length);
+          return <TableColumn key={header} header={header} cells={cells} />;
+        })}
+      </StyledTableContainer>
     </StyledTable>
   );
 };
