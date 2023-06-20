@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: var(--roboto);
-        background-color: #fff;
+        background-color: var(--light-gray);
         height: 100vh;
     }
 

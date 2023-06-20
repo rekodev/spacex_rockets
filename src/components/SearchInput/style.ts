@@ -28,14 +28,30 @@ export const StyledSearchInput = styled.div`
     outline: none;
     font-size: 1rem;
     padding-left: 42px;
-    padding: 11px 0 9px 42px;
+    padding: 11px 4px 9px 42px;
     display: flex;
     align-items: center;
     font-family: Roboto;
+    overflow: hidden;
   }
 
   input::placeholder {
     color: #9b9eac;
     letter-spacing: 0.5px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    pointer-events: none; /* To ensure the text field stays clickable */
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    width: 35px; /* You can adjust the fade width */
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(245, 245, 250, 1) 80%
+    );
   }
 `;
