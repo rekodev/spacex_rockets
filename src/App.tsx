@@ -11,10 +11,29 @@ function App() {
     'Mass',
     'Cost per launch',
   ];
+
   const rows = [
-    ['Rocket 1', 'Diameter 1', 'Height 1', 'Mass 1', 'Cost 1'],
-    ['Rocket 2', 'Diameter 2', 'Height 2', 'Mass 2', 'Cost 2'],
-    ['Rocket 3', 'Diameter 3', 'Height 3', 'Mass 3', 'Cost 3'],
+    {
+      'Rocket Name': 'Rocket 1',
+      Diameter: 'Diameter 1',
+      Height: 'Height 1',
+      Mass: 'Mass 1',
+      'Cost per launch': 'Cost 1',
+    },
+    {
+      'Rocket Name': 'Rocket 2',
+      Diameter: 'Diameter 2',
+      Height: 'Height 2',
+      Mass: 'Mass 2',
+      'Cost per launch': 'Cost 2',
+    },
+    {
+      'Rocket Name': 'Rocket 3',
+      Diameter: 'Diameter 3',
+      Height: 'Height 3',
+      Mass: 'Mass 3',
+      'Cost per launch': 'Cost 3',
+    },
   ];
 
   return (

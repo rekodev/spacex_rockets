@@ -1,26 +1,18 @@
-import TableRow from '../TableRow';
+import TableColumn from '../TableColumn';
 import { StyledTable } from './style';
 
-interface TableComponents {
+interface TableProps {
   headers: string[];
-  rows: string[][];
+  rows: Record<string, string>[];
 }
 
-const Table = ({ headers, rows }: TableComponents) => {
+const Table = ({ headers, rows }: TableProps) => {
   return (
     <StyledTable>
-      <thead>
-        <tr>
-          {headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((rowCells, index) => (
-          <TableRow key={index} cells={rowCells} />
-        ))}
-      </tbody>
+      {headers.map((header) => {
+        const cells = rows.map((row) => row[header]);
+        return <TableColumn key={header} header={header} cells={cells} />;
+      })}
     </StyledTable>
   );
 };
