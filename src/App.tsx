@@ -45,13 +45,42 @@ function App() {
     return <p>Error...</p>;
   }
 
-  const headers = [
-    'Rocket Name',
-    'Diameter',
-    'Height',
-    'Mass',
-    'Cost per launch',
-  ];
+  function getObjectKey(
+    obj: Record<string, any>,
+    value: any
+  ): string | undefined {
+    const objectKey = Object.keys(obj).find((key) => obj[key] === value);
+    const splitObjectKey = objectKey?.split('_');
+
+    let parsedObjectKey: string | undefined;
+
+    if (splitObjectKey) {
+      if (splitObjectKey.length > 2) {
+        parsedObjectKey = [
+          splitObjectKey[0].charAt(0).toUpperCase() +
+            splitObjectKey[0].slice(1),
+          ...splitObjectKey.slice(1).map((word) => word.toLowerCase()),
+        ].join(' ');
+      } else {
+        parsedObjectKey = splitObjectKey
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+      }
+    }
+
+    return parsedObjectKey;
+  }
+
+  let headers: string[] = [];
+  if (data[0]) {
+    headers = [
+      getObjectKey(data[0], data[0].rocket_name) || '',
+      getObjectKey(data[0], data[0].diameter) || '',
+      getObjectKey(data[0], data[0].height) || '',
+      getObjectKey(data[0], data[0].mass) || '',
+      getObjectKey(data[0], data[0].cost_per_launch) || '',
+    ];
+  }
 
   const rows = data?.map((rocket) => ({
     'Rocket Name': rocket.rocket_name,
