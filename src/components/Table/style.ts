@@ -14,3 +14,15 @@ export const StyledTableContainer = styled.div`
     background-color: none;
   }
 `;
+
+export const StyledNoResultsParagraph = styled.div`
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text-secondary);
+
+  p {
+    font-weight: 300;
+  }
+`;
