@@ -1,6 +1,10 @@
 import TableColumn from '../TableColumn';
 import { useState, useEffect } from 'react';
-import { StyledTable, StyledTableContainer } from './style';
+import {
+  StyledNoResultsParagraph,
+  StyledTable,
+  StyledTableContainer,
+} from './style';
 
 interface TableProps {
   headers: string[];
@@ -73,7 +77,7 @@ const Table = ({ headers, rows, searchTerm, setResultCount }: TableProps) => {
     setResultCount(filteredRows.length);
   }, [filteredRows, setResultCount]);
 
-  return (
+  return filteredRows.length > 0 ? (
     <StyledTable>
       <StyledTableContainer>
         {headers.map((header, index) => {
@@ -99,6 +103,13 @@ const Table = ({ headers, rows, searchTerm, setResultCount }: TableProps) => {
         })}
       </StyledTableContainer>
     </StyledTable>
+  ) : (
+    <StyledNoResultsParagraph>
+      <h3>Nothing found</h3>
+      <p>
+        You searched for "<b>{searchTerm}</b>"
+      </p>
+    </StyledNoResultsParagraph>
   );
 };
 
