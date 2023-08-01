@@ -1,4 +1,5 @@
 import { StyledSearchInput } from './style';
+import searchIcon from '../../assets/images/search-icon.svg';
 
 interface ISearchInputProps {
   setSearchTerm: (searchTerm: string) => void;
@@ -13,7 +14,7 @@ const SearchInput = ({ setSearchTerm }: ISearchInputProps) => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div className='search-icon'>
-        <img src='../../../public/search-icon.svg' alt='Search Icon' />
+        <img src={searchIcon} alt='Search Icon' />
       </div>
     </StyledSearchInput>
   );
